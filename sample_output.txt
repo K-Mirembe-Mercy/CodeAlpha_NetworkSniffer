@@ -1,0 +1,76 @@
+Sniffer 1.0.0 | source: file samples/sample_traffic.pcap | filter: none | Ctrl+C to stop
+#1    22:13:20.000 ARP   192.0.2.10 -> 192.0.2.1  42B  who has 192.0.2.1? tell 192.0.2.10
+#2    22:13:20.050 ARP   192.0.2.1 -> 192.0.2.10  42B  192.0.2.1 is at aa:aa:aa:aa:aa:01
+#3    22:13:20.100 DNS   192.0.2.10:40001 -> 192.0.2.53:53  71B  [DNS] query A example.com
+#4    22:13:20.150 DNS   192.0.2.53:53 -> 192.0.2.10:40001  71B  [DNS] response A example.com
+#5    22:13:20.200 ICMP  192.0.2.10 -> 198.51.100.20  46B  echo-request code=0
+#6    22:13:20.250 ICMP  198.51.100.20 -> 192.0.2.10  46B  echo-reply code=0
+#7    22:13:20.300 TCP   192.0.2.10:51000 -> 198.51.100.20:80  54B  [HTTP] SYN seq=100 win=8192
+#8    22:13:20.350 TCP   198.51.100.20:80 -> 192.0.2.10:51000  54B  [HTTP] SYN+ACK seq=500 win=8192
+#9    22:13:20.400 TCP   192.0.2.10:51000 -> 198.51.100.20:80  54B  [HTTP] ACK seq=101 win=8192
+#10   22:13:20.450 HTTP  192.0.2.10:51000 -> 198.51.100.20:80  119B  [HTTP] PSH+ACK GET /index.html HTTP/1.1  (Host: example.com)  [!]
+#11   22:13:20.500 HTTP  198.51.100.20:80 -> 192.0.2.10:51000  116B  [HTTP] PSH+ACK HTTP/1.1 200 OK  [!]
+#12   22:13:20.550 HTTP  192.0.2.10:51001 -> 198.51.100.20:80  139B  [HTTP] PSH+ACK POST /login HTTP/1.1  (Host: example.com)  [!]
+#13   22:13:20.600 TLS   192.0.2.10:51002 -> 198.51.100.20:443  63B  [HTTPS] PSH+ACK TLS handshake (encrypted session starting)
+#14   22:13:20.650 TLS   198.51.100.20:443 -> 192.0.2.10:51002  91B  [HTTPS] PSH+ACK TLS application data (encrypted)
+#15   22:13:20.700 TCP   203.0.113.99:44444 -> 192.0.2.10:20  54B  [FTP-data] SYN seq=0 win=8192
+#16   22:13:20.750 TCP   203.0.113.99:44444 -> 192.0.2.10:21  54B  [FTP] SYN seq=0 win=8192  [!]
+#17   22:13:20.800 TCP   203.0.113.99:44444 -> 192.0.2.10:22  54B  [SSH] SYN seq=0 win=8192
+#18   22:13:20.850 TCP   203.0.113.99:44444 -> 192.0.2.10:23  54B  [Telnet] SYN seq=0 win=8192  [!]
+#19   22:13:20.900 TCP   203.0.113.99:44444 -> 192.0.2.10:24  54B  SYN seq=0 win=8192
+#20   22:13:20.950 TCP   203.0.113.99:44444 -> 192.0.2.10:25  54B  [SMTP] SYN seq=0 win=8192
+#21   22:13:21.000 TCP   203.0.113.99:44444 -> 192.0.2.10:26  54B  SYN seq=0 win=8192
+#22   22:13:21.050 TCP   203.0.113.99:44444 -> 192.0.2.10:27  54B  SYN seq=0 win=8192
+#23   22:13:21.100 TCP   203.0.113.99:44444 -> 192.0.2.10:28  54B  SYN seq=0 win=8192
+#24   22:13:21.150 TCP   203.0.113.99:44444 -> 192.0.2.10:29  54B  SYN seq=0 win=8192
+#25   22:13:21.200 TCP   203.0.113.99:44444 -> 192.0.2.10:30  54B  SYN seq=0 win=8192
+#26   22:13:21.250 TCP   203.0.113.99:44444 -> 192.0.2.10:31  54B  SYN seq=0 win=8192
+#27   22:13:21.300 TCP   203.0.113.99:44444 -> 192.0.2.10:32  54B  SYN seq=0 win=8192
+#28   22:13:21.350 TCP   203.0.113.99:44444 -> 192.0.2.10:33  54B  SYN seq=0 win=8192
+#29   22:13:21.400 TCP   203.0.113.99:44444 -> 192.0.2.10:34  54B  SYN seq=0 win=8192
+      [!] ALERT: Possible port scan: 203.0.113.99 sent SYNs to 15 different ports on 192.0.2.10
+#30   22:13:21.450 TCP   203.0.113.99:44444 -> 192.0.2.10:35  54B  SYN seq=0 win=8192
+#31   22:13:21.500 TCP   203.0.113.99:44444 -> 192.0.2.10:36  54B  SYN seq=0 win=8192
+#32   22:13:21.550 TCP   203.0.113.99:44444 -> 192.0.2.10:37  54B  SYN seq=0 win=8192
+#33   22:13:21.600 TCP   203.0.113.99:44444 -> 192.0.2.10:38  54B  SYN seq=0 win=8192
+#34   22:13:21.650 TCP   203.0.113.99:44444 -> 192.0.2.10:39  54B  SYN seq=0 win=8192
+#35   22:13:21.700 ARP   192.0.2.1 -> 192.0.2.10  42B  192.0.2.1 is at de:ad:be:ef:00:99
+      [!] ALERT: ARP change: 192.0.2.1 moved from aa:aa:aa:aa:aa:01 to de:ad:be:ef:00:99 (possible ARP spoofing)
+
+============================================================
+CAPTURE SUMMARY
+============================================================
+Packets: 35    Bytes: 2130
+
+Protocols:
+  TCP            23   65.7%  ################
+  ARP             3    8.6%  ##
+  HTTP            3    8.6%  ##
+  DNS             2    5.7%  #
+  ICMP            2    5.7%  #
+  TLS             2    5.7%  #
+
+Top talkers (packets sent):
+  203.0.113.99                             20
+  192.0.2.10                               8
+  198.51.100.20                            4
+  192.0.2.1                                2
+  192.0.2.53                               1
+
+Top conversations:
+  203.0.113.99 -> 192.0.2.10  (20)
+  192.0.2.10 -> 198.51.100.20  (6)
+  198.51.100.20 -> 192.0.2.10  (4)
+  192.0.2.1 -> 192.0.2.10  (2)
+  192.0.2.10 -> 192.0.2.1  (1)
+
+Security observations:
+  [!] Unencrypted HTTP traffic: anyone on the path can read it  x3
+  [!] Possible credentials sent in cleartext  x1
+  [!] FTP is usually unencrypted: prefer a TLS variant  x1
+  [!] Telnet is usually unencrypted: prefer a TLS variant  x1
+  [!] Possible port scan: 203.0.113.99 sent SYNs to 15 different ports on 192.0.2.10  x1
+  [!] ARP change: 192.0.2.1 moved from aa:aa:aa:aa:aa:01 to de:ad:be:ef:00:99 (possible ARP spoofing)  x1
+
+Saved JSON: /tmp/o.json
+Saved CSV:  /tmp/o.csv
