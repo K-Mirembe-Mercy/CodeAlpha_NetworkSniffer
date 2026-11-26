@@ -110,4 +110,4 @@ python3 -m unittest discover -s tests -v
 | Sees only my own traffic | normal on switched/Wi-Fi networks; the sniffer sees what your NIC receives |
 
 ## License
-MIT, see [LICENSE](LICENSE). Replace `<Your Name>` in the license file.
+MIT, see [LICENSE](LICENSE).
